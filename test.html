@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="dom.js"></script>
+</head>
+<body>
+<button>创建</button>
+<button>删除</button>
+<button>查找</button>
+<button>大哥</button>
+<div class="parent">
+    <img src="http://img.mp.itc.cn/upload/20160912/5f4fa6c4050946aa9f1c5d6b4e128f0c_th.jpg" width="300">
+    <h1>滕王阁序</h1>
+    王勃
+    <p class="children1">落霞与孤鹜齐飞</p>
+    <p class="children2">秋水共长天一色</p>
+
+</div>
+<script>
+    //增
+    document.getElementsByTagName('button')[0].onclick = function () {
+        var div1 = dom.create('div','千呼万呼始出来',{style: 'color: red'})
+        var finddiv = dom.find('div')[0]
+        finddiv.appendChild(div1)
+    }
+    //删
+    document.getElementsByTagName('button')[1].onclick = function () {
+        var finddiv = dom.find('div')[0]
+        var lastdiv = dom.find('div',finddiv)[0]
+        dom.empty(lastdiv)
+    }
+    //查
+    document.getElementsByTagName('button')[2].onclick = function () {
+        var finddiv = dom.find('div')[0]
+        var h1 = dom.find('h1',finddiv)[0]
+        dom.style(h1,{background: 'blue'})
+    }
+    //大哥
+    document.getElementsByTagName('button')[3].onclick = function () {
+        var finddiv = dom.find('div')[0]
+        var p = dom.find('p',finddiv)[1]
+        var big = dom.bigBrother(p)
+        dom.style(big,{'margin-left': '30px'})
+    }
+</script>
+</body>
+</html>
